@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="map">
 
-    <l-map :zoom="zoom" :center="center">
+    <l-map v-if='this.weatherLocation' :zoom="zoom" :center="center">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
       <l-marker :lat-lng="marker"></l-marker>
     </l-map>
@@ -11,8 +11,6 @@
 
 <script>
 import {LMap,LTileLayer, LMarker} from 'vue2-leaflet';
-// Vue.component('l-map', Vue2Leaflet.LMap)
-
 
 export default {
   name: 'map-display',

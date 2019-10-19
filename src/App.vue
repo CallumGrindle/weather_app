@@ -28,7 +28,6 @@ export default {
         this.setCoods(lat, lon);
         this.apiCall(lat, lon);
       })
-      console.log("Api Called")
     }
 
     console.log(this.weatherLocation);
@@ -39,6 +38,7 @@ export default {
   },
   methods: {
     apiCall(lat, lon) {
+      console.log("Api Called")
       fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=${keys.weatherKey}`)
       .then(res => res.json())
       .then(data => this.weatherData = data)
