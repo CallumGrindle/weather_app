@@ -1,28 +1,54 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<template lang="html">
+  <weather-controllers class='controllers':weatherData='this.weatherData'>
+  </weather-controllers>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import {keys} from './keys.js';
+import weatherControllers from '@/components/weatherControllers.vue'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      weatherData: null
+    }
+  },
+  mounted() {
+    let lat;
+    let lon;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        this.apiCall(lat, lon);
+        console.log("Api Called");
+      })
+    }
+  },
   components: {
-    HelloWorld
+    'weather-controllers': weatherControllers
+  },
+  methods: {
+    apiCall(lat, lon) {
+      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=${keys.weatherKey}`)
+      .then(res => res.json())
+      .then(data => this.weatherData = data)
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="css" scoped>
+  .controllers {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    background-image: linear-gradient(red, yellow);
+    color: #fff
+  }
+
+
 </style>
