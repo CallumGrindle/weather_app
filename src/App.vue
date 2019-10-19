@@ -1,4 +1,4 @@
-<template lang="html">
+<template class='template' lang="html">
   <weather-controllers class='controllers':weatherData='this.weatherData'>
   </weather-controllers>
 </template>
@@ -8,11 +8,13 @@
 import {keys} from './keys.js';
 import weatherControllers from '@/components/weatherControllers.vue'
 
+
 export default {
   name: 'app',
   data() {
     return {
-      weatherData: null
+      weatherData: null,
+      weatherLocation: {lat: null, lon: null}
     }
   },
   mounted() {
@@ -22,19 +24,26 @@ export default {
       navigator.geolocation.getCurrentPosition(position => {
         lat = position.coords.latitude;
         lon = position.coords.longitude;
+        this.setCoods(lat, lon);
         this.apiCall(lat, lon);
-        console.log("Api Called");
       })
+      console.log("Api Called")
     }
+
+    console.log(this.weatherLocation);
   },
   components: {
     'weather-controllers': weatherControllers
+
   },
   methods: {
     apiCall(lat, lon) {
       fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=${keys.weatherKey}`)
       .then(res => res.json())
       .then(data => this.weatherData = data)
+    },
+    setCoods(lat, lon) {
+      this.weatherLocation = {lat: lat, lon: lon}
     }
   }
 }
@@ -49,6 +58,7 @@ export default {
     background-image: linear-gradient(red, yellow);
     color: #fff
   }
+
 
 
 </style>

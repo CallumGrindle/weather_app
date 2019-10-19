@@ -1,9 +1,9 @@
 <template lang="html">
   <article class="display">
     <div class="location">
-      <h1>{{weatherData.name}}</h1>
+      <h1 class='name'>{{weatherData.name}}</h1>
+      <img class='icon' :src='this.iconUrl' >
     </div>
-    <img class='icon' :src='this.iconUrl' >
     <div class="temperature">
       <h2 class="degree">{{weatherData.main.temp}} °C</h2>
     </div>
@@ -36,6 +36,15 @@ export default {
     font-family: Helvetica, sans-serif;
   }
 
+  .location {
+    display: flex;
+    justify-content: center;
+  }
 
+  h1.name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
 </style>
