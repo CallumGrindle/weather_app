@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <!-- <map-display :weatherData='this.weatherData'></map-display> -->
+    <map-display :weatherData='this.weatherData'></map-display>
     <weather-display class='display-component' v-if='weatherData' :weatherData='this.weatherData'></weather-display>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
     'weather-display': weatherDisplay,
     'map-display': mapComponent
   },
-  props: ['weatherData']
+  props: ['weatherData', 'weatherLocation']
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template class='template' lang="html">
-  <weather-controllers class='controllers':weatherData='this.weatherData'>
+  <weather-controllers class='controllers':weatherData='this.weatherData' :weatherLocation='this.weatherLocation'>
   </weather-controllers>
 </template>
 
@@ -55,7 +55,7 @@ export default {
     padding: 0;
     border: 0;
     box-sizing: border-box;
-    background-image: linear-gradient(red, yellow);
+    background-image: linear-gradient(blue, teal);
     color: #fff
   }
 
