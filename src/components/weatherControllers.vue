@@ -1,10 +1,11 @@
 <template lang="html">
-  <div class="">
-    <map-display v-if='this.weatherLocation' :weatherData='this.weatherData'
-    :weatherLocation='this.weatherLocation'></map-display>
-    
+  <div class="weatherControllers">
+
     <weather-display class='display-component' v-if='weatherData'
     :weatherData='this.weatherData'></weather-display>
+    
+    <map-display v-if='this.weatherLocation' :weatherData='this.weatherData'
+    :weatherLocation='this.weatherLocation'></map-display>
   </div>
 </template>
 
@@ -25,6 +26,13 @@ export default {
 <style lang="css" scoped>
   .display-component {
     display: flex;
+    justify-content: center;
+  }
+  .weatherControllers {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     justify-content: center;
   }
 </style>
