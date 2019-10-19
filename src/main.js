@@ -1,11 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
-import { LMap, LMarker } from 'vue2-leaflet';
-import { Icon } from 'leaflet'
+import { Icon }  from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
-Vue.component('l-map', LMap);
-Vue.component('l-marker', LMarker);
+import Vue from 'vue'
+import App from './App.vue'
+
 delete Icon.Default.prototype._getIconUrl;
 
 Icon.Default.mergeOptions({

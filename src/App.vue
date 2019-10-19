@@ -1,5 +1,6 @@
 <template class='template' lang="html">
-  <weather-controllers class='controllers':weatherData='this.weatherData' :weatherLocation='this.weatherLocation'>
+  <weather-controllers class='controllers':weatherData='this.weatherData'
+  :weatherLocation='this.weatherLocation'>
   </weather-controllers>
 </template>
 

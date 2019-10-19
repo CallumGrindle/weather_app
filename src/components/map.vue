@@ -1,10 +1,16 @@
 <template lang="html">
+  <div class="map">
 
-<l-map ref="myMap"></l-map>
+    <l-map :zoom="zoom" :center="center">
+      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-marker :lat-lng="marker"></l-marker>
+    </l-map>
+
+  </div>
 </template>
 
 <script>
-import {LMap, LMarker} from 'vue2-leaflet';
+import {LMap,LTileLayer, LMarker} from 'vue2-leaflet';
 // Vue.component('l-map', Vue2Leaflet.LMap)
 
 
@@ -12,7 +18,12 @@ export default {
   name: 'map-display',
   data() {
     return {
-      mapLocation: null
+      mapLocation: null,
+      zoom:13,
+      center: L.latLng(this.weatherLocation.lat, this.weatherLocation.lon),
+      url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      marker: L.latLng(this.weatherLocation.lat, this.weatherLocation.lon),
     }
   },
   methods: {
@@ -30,18 +41,19 @@ export default {
     if (this.weatherLocation) {
       this.mapLocation = this.weatherLocation
     }
-    this.$nextTick(() => {
-        this.$refs.myMap.mapObject.ANY_LEAFLET_MAP_METHOD();
-      })
   },
   components: {
         LMap,
-        LMarker
+        LMarker,
+        LTileLayer
     },
   props: ['weatherLocation']
 }
 </script>
 
 <style lang="css" scoped>
-  /* #mapid { height: 180px; } */
+  .map {
+    height: 50vh;
+    width: 50vh
+  }
 </style>
