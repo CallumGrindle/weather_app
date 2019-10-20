@@ -3,9 +3,11 @@
 
     <weather-display class='display-component' v-if='weatherData'
     :weatherData='this.weatherData'></weather-display>
-    
-    <map-display v-if='this.weatherLocation' :weatherData='this.weatherData'
-    :weatherLocation='this.weatherLocation'></map-display>
+
+    <map-display v-if='this.weatherLocation.lat && this.weatherLocation.lon'
+    :weatherData='this.weatherData'
+    :weatherLocation='this.weatherLocation'>
+    </map-display>
   </div>
 </template>
 

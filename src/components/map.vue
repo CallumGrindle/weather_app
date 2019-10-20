@@ -5,7 +5,7 @@
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
       <l-marker :lat-lng="marker"></l-marker>
     </l-map>
-
+    <!-- <button v-on:click='handleMapButton' type="button" name="button">See Weather Here</button> -->
   </div>
 </template>
 
@@ -36,9 +36,8 @@ export default {
     }
   },
   mounted() {
-    if (this.weatherLocation) {
-      this.mapLocation = this.weatherLocation
-    }
+    if (this.weatherLocation.lat && this.weatherLocation.lon)
+      {this.mapLocation = this.weatherLocation}
   },
   components: {
         LMap,
