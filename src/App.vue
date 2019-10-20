@@ -41,9 +41,13 @@ export default {
         this.apiCall(lat, lon);
       })
     }
-    eventBus.$on('update:center', (location) => {
-      console.log(location);
-    })  
+    // eventBus.$on('update:center', (location) => {
+    //   console.log(location);
+    // });
+    eventBus.$on('weather-search', (searchTerm) => {
+      console.log('api called');
+      this.apiCitySearch(searchTerm)
+    })
   },
   components: {
     'weather-controllers': weatherControllers,
@@ -57,6 +61,12 @@ export default {
         .then(res => res.json())
         .then(data => this.weatherData = data)
       },
+
+    apiCitySearch(searchTerm) {
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=metric&APPID=${keys.weatherKey}`)
+        .then(res => res.json())
+        .then(data => this.weatherData = data)
+    },
       setCoods(lat, lon) {
         this.weatherLocation = {lat: lat, lon: lon}
       }
