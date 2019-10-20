@@ -26,7 +26,8 @@ export default {
   data() {
     return {
       weatherData: null,
-      weatherLocation: {lat: null, lon: null}
+      weatherLocation: {lat: null, lon: null},
+      updatedWeatherLocation: {lat: null, lon: null}
     }
   },
   mounted() {
@@ -40,8 +41,9 @@ export default {
         this.apiCall(lat, lon);
       })
     }
-
-    console.log(this.weatherLocation);
+    eventBus.$on('update:center', (location) => {
+      console.log(location);
+    })  
   },
   components: {
     'weather-controllers': weatherControllers,

@@ -44,12 +44,12 @@ export default {
     }
   },
   mounted() {
-    eventBus.$on('update:center', (location) => {
-      console.log(location);
-
     if (this.weatherLocation.lat && this.weatherLocation.lon)
       {this.mapLocation = this.weatherLocation};
-    })
+
+    // LMap.mouseEventToLatLng(dblclick => {
+    //   console.log('dblclick')
+    // })
   },
   components: {
         LMap,

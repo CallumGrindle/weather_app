@@ -20,6 +20,11 @@ export default {
   components: {
     'map-display': mapDisplay
   },
+  methods: {
+    handleMapButtonClick() {
+      console.log('pressed');
+    }
+  },
   props: ['weatherData', 'weatherLocation']
 
 }
