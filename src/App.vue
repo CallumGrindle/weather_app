@@ -60,12 +60,16 @@ export default {
       }
     }
   }
-  </script>
+</script>
 
-  <style lang="css" scoped>
+<style lang="css" scoped>
 
+  * {
+    color: #F2EFED
+  }
 
+  .app {
+    background-image: linear-gradient(#1D76C4, #6BC1E0);
+  }
 
-
-
-  </style>
+</style>

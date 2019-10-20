@@ -3,7 +3,7 @@
   <article class="map-controllers">
 
     <button v-on:click='handleMapButtonClick' class='button' type="button" name="button">See Weather Here</button>
-    <map-display v-if='this.weatherLocation.lat && this.weatherLocation.lon'
+    <map-display class='map-display' v-if='this.weatherLocation.lat && this.weatherLocation.lon'
     :weatherData='this.weatherData'
     :weatherLocation='this.weatherLocation'>
     </map-display>
@@ -32,7 +32,7 @@ export default {
     align-items: center;
     flex-direction: column
   }
-  .button {
-    /* size: 10vh */
+  .map-display {
+    padding-top: 10px
   }
 </style>

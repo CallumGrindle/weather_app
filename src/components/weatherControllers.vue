@@ -28,7 +28,7 @@ export default {
     align-items: center;
   }
   .weatherControllers {
-    height: 50vh;
+    height: 45vh;
     display: flex;
     align-items: center;
     flex-direction: column;
