@@ -62,17 +62,15 @@ export default {
       fetch(`http://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=metric&APPID=${keys.weatherKey}`)
         .then(res => res.json())
         .then(data => this.weatherData = data)
-        .then(data => {
-          this.weatherLocation.lat = data.coord.lat;
-          this.weatherLocation.lat = data.coord.lon;
-        })
-        .then(eventBus.$emit('updated-coords', this.weatherLocation))
-    },
+        this.weatherLocation.lat = this.weatherData.coord.lat;
+        this.weatherLocation.lat = this.weatherData.coord.lon;
+        eventBus.$emit('updated-coords', this.weatherLocation)
+      },
       setCoods(lat, lon) {
         this.weatherLocation = {lat: lat, lon: lon}
       }
     }
-  }
+    }
 </script>
 
 <style lang="css" scoped>

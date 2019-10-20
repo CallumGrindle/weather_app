@@ -48,7 +48,6 @@ export default {
       {this.mapLocation = this.weatherLocation};
 
     eventBus.$on('updated-coords', (newCoords) => {
-      console.log(newCoords);
       this.center = L.latLng(newCoords.lat, newCoords.lon);
 
     })
