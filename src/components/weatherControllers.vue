@@ -3,6 +3,7 @@
 
     <weather-display class='display-component' v-if='weatherData'
     :weatherData='this.weatherData'></weather-display>
+    <weather-search></weather-search>
 
 
   </div>
@@ -10,12 +11,14 @@
 
 <script>
 import weatherDisplay from '@/components/weatherDisplay.vue'
+import weatherSearch from '@/components/weatherSearch.vue'
 
 
 export default {
   name: 'weather-controllers',
   components: {
-    'weather-display': weatherDisplay
+    'weather-display': weatherDisplay,
+    'weather-search': weatherSearch
   },
   props: ['weatherData', 'weatherLocation']
 }
