@@ -1,5 +1,5 @@
 <template class='template' lang="html">
-  <div class="app">
+  <div :class="{'cold': weatherData.main.temp < 15, 'hot': weatherData.main.temp > 15}">
 
   <weather-controllers class='controllers':weatherData='this.weatherData'
   :weatherLocation='this.weatherLocation'>
@@ -45,6 +45,12 @@ export default {
       this.apiCitySearch(searchTerm)
     })
   },
+  computed: {
+    backgroundClass() {
+      if (weatherData.main.temp < 15) {return 'cold'}
+      else if (weatherData.main.temp > 15) {return 'hot'}
+    }
+  },
   components: {
     'weather-controllers': weatherControllers,
     'map-controllers': mapControllers
@@ -83,11 +89,11 @@ export default {
     color: #F2EFED
   }
 
-  .app {
+  .cold {
     background-image: linear-gradient(#1D76C4, #6BC1E0);
   }
 
-  .app.hot {
+  .hot {
     background-image: linear-gradient(#1D76C4, #6BC1E0)
   }
 

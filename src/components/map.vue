@@ -15,7 +15,7 @@ import {LMap,LTileLayer, LMarker} from 'vue2-leaflet';
 import {eventBus} from '@/main.js'
 
 export default {
-  name: 'map-display',
+  name: 'map',
   data() {
     return {
       mapLocation: null,
@@ -48,8 +48,11 @@ export default {
       {this.mapLocation = this.weatherLocation};
 
     eventBus.$on('updated-coords', (newCoords) => {
-      this.center = L.latLng(newCoords.lat, newCoords.lon);
-      this.marker = L.latLng(newCoords.lat, newCoords.lon);
+        this.center = L.latLng(newCoords.lat, newCoords.lon);
+        this.marker = L.latLng(newCoords.lat, newCoords.lon);
+      // let goTo = L.latLng(newCoords.lat, newCoords.lon);
+      // map.panTo(goTo)
+
 
     })
   },
