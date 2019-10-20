@@ -49,6 +49,7 @@ export default {
 
     eventBus.$on('updated-coords', (newCoords) => {
       this.center = L.latLng(newCoords.lat, newCoords.lon);
+      this.marker = L.latLng(newCoords.lat, newCoords.lon);
 
     })
   },

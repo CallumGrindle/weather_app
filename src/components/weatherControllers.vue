@@ -29,6 +29,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 30vh;
+    padding-bottom: 20px
   }
   .weatherControllers {
     height: 45vh;
