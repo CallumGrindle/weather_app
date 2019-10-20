@@ -3,7 +3,8 @@
   <article class="map-controllers">
 
     <!-- <button v-on:click='handleMapButtonClick' class='button' type="button" name="button">See Weather Here</button> -->
-    <map-display class='map-display' v-if='this.weatherLocation.lat && this.weatherLocation.lon'
+    <map-display class='map-display'
+    v-if='this.weatherLocation.lat && this.weatherLocation.lon'
     :weatherData='this.weatherData'
     :weatherLocation='this.weatherLocation'>
     </map-display>

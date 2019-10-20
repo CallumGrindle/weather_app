@@ -1,11 +1,14 @@
 <template class='template' lang="html">
-  <div :class="{'cold': weatherData.main.temp < 15, 'hot': weatherData.main.temp > 15}">
+  <div :class="{'cold': weatherData.main.temp < 15,
+  'hot': weatherData.main.temp > 15}">
 
-  <weather-controllers class='controllers':weatherData='this.weatherData'
+  <weather-controllers class='controllers'
+  :weatherData='this.weatherData'
   :weatherLocation='this.weatherLocation'>
   </weather-controllers>
 
-  <map-controllers class='controllers' v-if='this.weatherLocation.lat && this.weatherLocation.lon'
+  <map-controllers class='controllers'
+  v-if='this.weatherLocation.lat && this.weatherLocation.lon'
   :weatherData='this.weatherData'
   :weatherLocation='this.weatherLocation'>
   </map-controllers>
