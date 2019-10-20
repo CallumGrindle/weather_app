@@ -66,6 +66,7 @@ export default {
           this.weatherLocation.lat = data.coord.lat;
           this.weatherLocation.lat = data.coord.lon;
         })
+        .then(eventBus.$emit('updated-coords', this.weatherLocation))
     },
       setCoods(lat, lon) {
         this.weatherLocation = {lat: lat, lon: lon}

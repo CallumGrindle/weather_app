@@ -47,9 +47,11 @@ export default {
     if (this.weatherLocation.lat && this.weatherLocation.lon)
       {this.mapLocation = this.weatherLocation};
 
-    // LMap.mouseEventToLatLng(dblclick => {
-    //   console.log('dblclick')
-    // })
+    eventBus.$on('updated-coords', (newCoords) => {
+      console.log(newCoords);
+      this.center = L.latLng(newCoords.lat, newCoords.lon);
+
+    })
   },
   components: {
         LMap,
