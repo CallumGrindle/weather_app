@@ -14,13 +14,17 @@
 </template>
 
 <script>
+import {eventBus} from '@/main.js'
 export default {
   name: 'weather-display',
   props: ['weatherData'],
   data() {
     return {
-      iconUrl: `http://openweathermap.org/img/wn/${this.weatherData.weather[0].icon}@2x.png`
+      iconUrl: `http://openweathermap.org/img/wn/${this.weatherData.weather[0].icon}@2x.png`,
     }
+  },
+  mounted() {
+    eventBus.$on('updated-icon')
   }
 }
 </script>

@@ -65,7 +65,8 @@ export default {
         .then(data => {
           console.log(this.weatherData)
           this.weatherLocation = this.weatherData.coord;
-          eventBus.$emit('updated-coords', this.weatherLocation)
+          eventBus.$emit('updated-coords', this.weatherLocation);
+          eventBus.$emit('updated-icon', this.weatherData.weather[0].icon)
         })
       },
       setCoods(lat, lon) {
@@ -84,6 +85,10 @@ export default {
 
   .app {
     background-image: linear-gradient(#1D76C4, #6BC1E0);
+  }
+
+  .app.hot {
+    background-image: linear-gradient(#1D76C4, #6BC1E0)
   }
 
 </style>
