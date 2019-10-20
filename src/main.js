@@ -4,6 +4,8 @@ import 'leaflet/dist/leaflet.css'
 import Vue from 'vue'
 import App from './App.vue'
 
+export const eventBus = new Vue();
+
 delete Icon.Default.prototype._getIconUrl;
 
 Icon.Default.mergeOptions({

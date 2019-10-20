@@ -5,7 +5,7 @@
 </template>
 
 <script>
-
+import {eventBus} from '@/main.js'
 import {keys} from './keys.js';
 import weatherControllers from '@/components/weatherControllers.vue'
 
@@ -59,7 +59,5 @@ export default {
     background-image: linear-gradient(blue, teal);
     color: #fff
   }
-
-
 
 </style>
