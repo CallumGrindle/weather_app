@@ -1,13 +1,13 @@
 <template lang="html">
-  <div class="map">
 
+  <div class="map">
     <l-map v-if='this.weatherLocation' :zoom="zoom" :center="center"
     v-on:move='handleMapMove'>
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
       <l-marker :lat-lng="marker"></l-marker>
     </l-map>
-    <button v-on:click='handleMapButtonClick' type="button" name="button">See Weather Here</button>
   </div>
+
 </template>
 
 <script>

@@ -28,8 +28,9 @@ export default {
 <style lang="css" scoped>
 
   .display {
-    
     font-family: Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
   }
 
   .location {

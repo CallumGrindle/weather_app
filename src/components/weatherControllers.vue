@@ -4,22 +4,18 @@
     <weather-display class='display-component' v-if='weatherData'
     :weatherData='this.weatherData'></weather-display>
 
-    <map-display v-if='this.weatherLocation.lat && this.weatherLocation.lon'
-    :weatherData='this.weatherData'
-    :weatherLocation='this.weatherLocation'>
-    </map-display>
+
   </div>
 </template>
 
 <script>
 import weatherDisplay from '@/components/weatherDisplay.vue'
-import mapComponent from '@/components/map.vue'
+
 
 export default {
   name: 'weather-controllers',
   components: {
-    'weather-display': weatherDisplay,
-    'map-display': mapComponent
+    'weather-display': weatherDisplay
   },
   props: ['weatherData', 'weatherLocation']
 }
@@ -29,9 +25,10 @@ export default {
   .display-component {
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .weatherControllers {
-    height: 100vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     flex-direction: column;

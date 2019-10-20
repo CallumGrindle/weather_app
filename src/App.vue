@@ -1,13 +1,24 @@
 <template class='template' lang="html">
+  <div class="app">
+
   <weather-controllers class='controllers':weatherData='this.weatherData'
   :weatherLocation='this.weatherLocation'>
   </weather-controllers>
+
+  <map-controllers class='controllers' v-if='this.weatherLocation.lat && this.weatherLocation.lon'
+  :weatherData='this.weatherData'
+  :weatherLocation='this.weatherLocation'>
+  </map-controllers>
+
+</div>
+
 </template>
 
 <script>
 import {eventBus} from '@/main.js'
 import {keys} from './keys.js';
 import weatherControllers from '@/components/weatherControllers.vue'
+import mapControllers from '@/components/mapControls.vue'
 
 
 export default {
@@ -33,31 +44,28 @@ export default {
     console.log(this.weatherLocation);
   },
   components: {
-    'weather-controllers': weatherControllers
+    'weather-controllers': weatherControllers,
+    'map-controllers': mapControllers
 
   },
   methods: {
     apiCall(lat, lon) {
       console.log("Api Called")
       fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=${keys.weatherKey}`)
-      .then(res => res.json())
-      .then(data => this.weatherData = data)
-    },
-    setCoods(lat, lon) {
-      this.weatherLocation = {lat: lat, lon: lon}
+        .then(res => res.json())
+        .then(data => this.weatherData = data)
+      },
+      setCoods(lat, lon) {
+        this.weatherLocation = {lat: lat, lon: lon}
+      }
     }
   }
-}
-</script>
+  </script>
 
-<style lang="css" scoped>
-  .controllers {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    background-image: linear-gradient(blue, teal);
-    color: #fff
-  }
+  <style lang="css" scoped>
 
-</style>
+
+
+
+
+  </style>
